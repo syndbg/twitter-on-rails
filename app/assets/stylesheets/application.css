@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+.flex-block {
+  display: flex;
+}
+
+.flex-inline {
+  display: inline-flex;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+.fill-height {
+  height: 100%;
+}

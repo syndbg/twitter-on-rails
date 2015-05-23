@@ -10,9 +10,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                password: 'foo',
                                password_confirmation: 'bar' }
     end
+    assert_not is_logged_in?
 
     assert_template 'users/new'
-
+    assert_select 'div.message_explanation'
+    assert_select 'div.alert-danger'
   end
 
   test 'valid signup information' do
@@ -24,7 +26,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                             password: 'password',
                                             password_confirmation: 'password' }
     end
+    assert is_logged_in?
 
     assert_template 'users/show'
+    assert_not_nil flash
+    assert flash.key?(:success)
+    assert_select 'div.message_explanation'
+    assert_select 'div.alert-success'
   end
 end

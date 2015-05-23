@@ -13,4 +13,8 @@ class ActiveSupport::TestCase
   def assert_contains(expected_string, actual)
     assert actual.include? expected_string
   end
+
+  def is_logged_in?
+    !session[:user_id].nil?
+  end
 end

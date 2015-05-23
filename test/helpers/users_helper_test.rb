@@ -11,6 +11,6 @@ class UsersHelperTest < ActionView::TestCase
 
   test 'gravatar for size' do
     size = 150
-    assert_contains "s=#{size}", gravatar_for(@user, size)
+    assert_contains "s=#{size}", gravatar_for(@user, size: size)
   end
 end
