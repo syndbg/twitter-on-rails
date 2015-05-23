@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(session_data[:password])
       log_in user
       remember user
+      session_data[:remember_me] == '1' ? remember(user) : forget(user)
       flash.now[:success] = 'Logged in!'
       redirect_to user
     else
