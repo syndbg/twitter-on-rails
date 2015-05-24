@@ -14,7 +14,7 @@ class ActiveSupport::TestCase
     assert actual.include? expected_string
   end
 
-  def is_logged_in?
+  def logged_in?
     !session[:user_id].nil?
   end
 
