@@ -13,6 +13,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'did_you_mean'
 gem 'guard'
 gem 'bcrypt', '~> 3.1.7'
+gem 'faker'
+gem 'will_paginate'
+gem 'rubocop'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

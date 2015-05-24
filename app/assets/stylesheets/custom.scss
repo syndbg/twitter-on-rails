@@ -1,6 +1,49 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* flexbox layout */
+
+.flex-block {
+  display: flex;
+}
+
+.flex-inline {
+  display: inline-flex;
+}
+
+.flex-horizontal-center {
+  justify-content: center;
+}
+
+.flex-rows {
+  flex-direction: column;
+}
+
+.flex-reverse-rows {
+  flex-direction: column-reverse;
+}
+
+.flex-cols {
+  flex-direction: row;
+}
+
+.flex-reverse-cols {
+  flex-direction: row-reverse;
+}
+
+.flex-vertical-center {
+  align-items: center;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+.fill-height {
+  height: 100%;
+}
+
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -30,6 +73,12 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+/* pagination */
+.pagination {
+  @extend .flex-block;
+  @extend .flex-horizontal-center;
 }
 
 /* typography */
@@ -173,13 +222,38 @@ aside {
   }
 }
 
+/* users */
+
 .gravatar {
   float: left;
   margin-right: 10px;
 }
 
-.gravatar_edit {
-  margin-top: 15px;
+.gravatar-edit {
+  margin-bottom: 15px;
+}
+
+.user-actions {
+  float: right;
+  margin-right: 8%;
+}
+
+/* Users index */
+
+.users {
+  @extend .flex-block;
+  @extend .flex-rows;
+  list-style: none;
+  margin: 0;
+  li {
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+
+    &:hover {
+      font-weight: bold;
+      background-color: #eeeeee;
+    }
+  }
 }
 
 /* miscellaneous */

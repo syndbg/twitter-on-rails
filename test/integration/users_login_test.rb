@@ -37,11 +37,13 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test 'login without remembering' do
     login_as(@user, remember_me: '0')
+    assert_nil assigns(:user).remember_token
     assert cookies['remember_token'].blank? || cookies['remember_token'].nil?
   end
 
   test 'login and remember me' do
     login_as(@user, remember_me: '1')
+    assert_not_nil assigns(:user).remember_token
     assert_not cookies['remember_token'].blank? || cookies['remember_token'].nil?
   end
 end

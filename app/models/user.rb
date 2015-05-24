@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false },
                     length: { maximum: 250 }
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_nil: true
 
   before_save do
     self.email = email.downcase
@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def forget
+    self.remember_token = nil
     update_attribute(:remember_digest, nil)
   end
 
