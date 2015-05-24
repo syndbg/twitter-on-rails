@@ -37,7 +37,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert flash.key?(:info)
     # login before activation
     login_as(user)
-    assert flash.key?(:danger)
+    assert flash.key?(:warning)
     assert_not logged_in?
     # activate with invalid activation_token
     get edit_account_activation_path('cool token')

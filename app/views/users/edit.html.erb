@@ -11,17 +11,7 @@
         <a class="flex-block flex-vertical-center" href="http://gravatar.com/emails" target="_blank">change</a>
       </div>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control', value: @user.name %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control', value: @user.email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= render 'fields', f: f %>
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
