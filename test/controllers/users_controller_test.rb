@@ -30,6 +30,19 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to login_path
   end
 
+  test 'should get index when logged in' do
+    login_as(@user)
+    get :index
+    assert_response :success
+  end
+
+  test 'should have only activated users in index' do
+    login_as(@user)
+    get :index
+    users = assigns(:users)
+    users.each { |u| assert u.activated  }
+  end
+
   test 'should redirect edit when logged in as wrong user' do
     login_as(@other_user)
     get :edit, id: @user.id
@@ -68,11 +81,11 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should not allow the admin attribute to be edited via the web' do
-   login_as(@other_user)
-   assert_not @other_user.admin?
-   patch :update, id: @other_user, user: { password: 'password',
-                                           password_confirmation: 'password',
-                                           admin: true }
-   assert_not @other_user.reload.admin?
- end
+    login_as(@other_user)
+    assert_not @other_user.admin?
+    patch :update, id: @other_user, user: { password: 'password',
+                                            password_confirmation: 'password',
+                                            admin: true }
+    assert_not @other_user.reload.admin?
+  end
 end
