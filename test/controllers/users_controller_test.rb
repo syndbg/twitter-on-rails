@@ -30,6 +30,19 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to login_path
   end
 
+  test 'should get index when logged in' do
+    login_as(@user)
+    get :index
+    assert_response :success
+  end
+
+  test 'should have only activated users in index' do
+    login_as(@user)
+    get :index
+    users = assigns(:users)
+    users.each { |u| assert u.activated  }
+  end
+
   test 'should redirect edit when logged in as wrong user' do
     login_as(@other_user)
     get :edit, id: @user.id

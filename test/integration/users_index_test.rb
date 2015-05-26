@@ -6,6 +6,17 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     @user = users(:archer)
   end
 
+  test 'should redirect to root_path if /:id is non-existing user or not activated' do
+    login_as(@admin_user)
+    # non-existing
+    get user_path(9999)
+    assert_redirected_to root_path
+    # not-activated
+    @user.toggle!(:activated)
+    get user_path(@user.reload)
+    assert_redirected_to root_path
+  end
+
   test 'should have index including pagination and delete actions for admin users' do
     login_as(@admin_user)
     get users_path
