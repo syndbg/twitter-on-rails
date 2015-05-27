@@ -17,6 +17,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  onfig.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'railsocbook.herokuapp.com',
+    user_name:            'syndbe@gmail.com',
+    password:             'lifeiscraft1',
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
