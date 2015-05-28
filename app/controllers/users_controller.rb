@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id], activated: true)
+    @microposts = @user.nil? ? Micropost.none : @user.microposts
+    @microposts = @microposts.paginate(page: params[:page])
     return redirect_to root_path if @user.nil?
   end
 
@@ -51,13 +53,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def require_login
-    return if logged_in?
-    store_location
-    flash[:danger] = 'Please log in.'
-    redirect_to login_path
-  end
 
   def user_params
     params.require(:user).permit(:name,
