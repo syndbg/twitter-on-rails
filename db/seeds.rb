@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # replicate the user we're already using in tests
+# require 'carrierwave/orm/activerecord'
 User.create!(name: 'Example User',
              email: 'example@railstutorial.org',
              password: 'foobar',

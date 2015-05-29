@@ -21,10 +21,19 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'railsocbook.herokuapp.com',
-    user_name:            'syndbe@gmail.com',
-    password:             'lifeiscraft1',
+    user_name:            'potato@potato.com',
+    password:             'potato',
     authentication:       'plain',
     enable_starttls_auto: true
+  }
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: 'railsocbook',
+      access_key_id: 'AKIAJ4LM74JJ6UNNF7IQ',
+      secret_access_key: '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'
+    }
   }
 
   # Print deprecation notices to the Rails logger.
